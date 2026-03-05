@@ -7,7 +7,7 @@
 // 1. 請填入您的 Google 試算表「發布到網路 -> CSV」的網址
 // 格式範例：https://docs.google.com/spreadsheets/d/e/.../pub?output=csv
 // (請確保試算表 A 欄是「名字」，B 欄是「桌次」，不要有空白列)
-const GOOGLE_SHEET_CSV_URL = "您的_GOOGLE_SHEET_CSV_網址_請貼在這裡";
+const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXf3vNAeqYDFVjLSi2cezpx0B70WUpgzqnMYkxn4H8Mfn-p_MV0-0fSbrFVPz-6QD334RE33vE0Z-X/pub?output=csv";
 
 
 // ==============================================================
@@ -176,3 +176,4 @@ document.addEventListener('DOMContentLoaded', () => {
         loadData();
     }
 });
+
