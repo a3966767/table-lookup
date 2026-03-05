@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桌次查詢系統</title>
+    <!-- 引入美觀的字體 -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- 背景裝飾與漸層 -->
+    <div class="background-overlay"></div>
+    <div class="decorative-circle circle-1"></div>
+    <div class="decorative-circle circle-2"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="title">桌次查詢系統</h1>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="nameInput" placeholder="請輸入您的Teams全名" autocomplete="off">
+            <button id="searchBtn">查詢桌次</button>
+        </div>
+
+        <!-- 查詢結果區塊 (預設隱藏) -->
+        <div id="resultContainer" class="result-container hidden">
+            <div class="result-card">
+                <p class="greeting">查詢結果：<span id="resultName"></span></p>
+                <div class="divider"></div>
+                <div class="table-info">
+                    <span class="label">您的專屬桌次為</span>
+                    <span class="table-number" id="resultTableNumber"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 錯誤提示區塊 (預設隱藏) -->
+        <div id="errorContainer" class="error-container hidden">
+            <p id="errorText"></p>
+        </div>
+
+        <!-- 載入中動畫 (預設隱藏) -->
+        <div id="loadingIndicator" class="loading-indicator hidden">
+            <div class="spinner"></div>
+            <p>資料載入中...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
