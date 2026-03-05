@@ -35,13 +35,28 @@ function performSearch() {
  * 檢查名單並顯示結果
  */
 function checkName(queryName) {
-    // 從預先載入的 data.js (guestData) 中精準匹配
-    // 若找不到精準匹配，試著檢查是否包含 (可選，目前使用精確匹配)
-    const tableNumber = guestData[queryName];
+    // 預處理：將輸入的名稱轉小寫並去除所有空白，提高比對容錯率
+    const normalizedQuery = queryName.toLowerCase().replace(/\s+/g, '');
+
+    let tableNumber = null;
+    let matchedName = queryName;
+
+    // 尋找符合的名單
+    for (const key in guestData) {
+        // 將資料庫裡面的名字轉小寫並去除空白
+        const normalizedKey = key.toLowerCase().replace(/\s+/g, '');
+
+        // 條件：精準完全匹配 (無視大小寫與空白)
+        if (normalizedKey === normalizedQuery) {
+            tableNumber = guestData[key];
+            matchedName = key; // 使用資料庫裡正確大小寫的全名來顯示
+            break;
+        }
+    }
 
     if (tableNumber) {
         // 找到結果
-        resultName.textContent = queryName;
+        resultName.textContent = matchedName;
         resultTableNumber.textContent = tableNumber;
         resultContainer.classList.remove('hidden');
 
