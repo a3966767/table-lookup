@@ -7,7 +7,7 @@
 // 1. 請填入您的 Google 試算表「發布到網路 -> CSV」的網址
 // 格式範例：https://docs.google.com/spreadsheets/d/e/.../pub?output=csv
 // (請確保試算表 A 欄是「名字」，B 欄是「桌次」，不要有空白列)
-const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXf3vNAeqYDFVjLSi2cezpx0B70WUpgzqnMYkxn4H8Mfn-p_MV0-0fSbrFVPz-6QD334RE33vE0Z-X/pub?gid=0&single=true&output=csv";
+const GOOGLE_SHEET_CSV_URL = "您的_GOOGLE_SHEET_CSV_網址_請貼在這裡";
 
 
 // ==============================================================
@@ -56,8 +56,8 @@ function parseCSV(csvText) {
  */
 async function loadData() {
     // 檢查是否有填寫網址
-    if (GOOGLE_SHEET_CSV_URL.includes('您的_')) {
-        showError('系統尚未設定 Google 試算表網址。<br>請管理員編輯 app.js 檔案並填寫 CSV 網址。');
+    if (!GOOGLE_SHEET_CSV_URL || !GOOGLE_SHEET_CSV_URL.startsWith('http')) {
+        showError('系統尚未設定 Google 試算表網址。<br>請管理員編輯 app.js 檔案並填寫正確的 CSV 網址 (需以 http 開頭)。');
         return false;
     }
 
@@ -172,9 +172,7 @@ nameInput.addEventListener('keypress', (e) => {
 // ==============================================================
 document.addEventListener('DOMContentLoaded', () => {
     // 預先在背景拉取資料，加速使用者查詢體驗
-    if (!GOOGLE_SHEET_CSV_URL.includes('您的_')) {
+    if (GOOGLE_SHEET_CSV_URL && GOOGLE_SHEET_CSV_URL.startsWith('http')) {
         loadData();
     }
 });
-
-
